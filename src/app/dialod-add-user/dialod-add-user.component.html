@@ -3,12 +3,12 @@
 <div>
   <mat-form-field class="mr-16 pt-16" appearance="outline">
     <mat-label>First name</mat-label>
-    <input matInput placeholder="enter first name" />
+    <input [(ngModel)]="user.firstName" matInput placeholder="enter first name" />
     <!-- <mat-hint>Please enter a name</mat-hint> -->
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Last name</mat-label>
-    <input matInput placeholder="enter last name" />
+    <input [(ngModel)]="user.lastName" matInput placeholder="enter last name" />
     <!-- <mat-hint>Please enter a name</mat-hint> -->
   </mat-form-field>
   </div>
@@ -16,7 +16,7 @@
   <div>
   <mat-form-field class="full-width" appearance="outline">
     <mat-label>Birthday</mat-label>
-    <input matInput placeholder="enter birthday" [matDatepicker]="picker"/>
+    <input [(ngModel)]="birthDate" matInput placeholder="enter birthday" [matDatepicker]="picker"/>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
     <!-- <mat-hint>Please enter a date</mat-hint> -->
@@ -26,7 +26,7 @@
   <div>
   <mat-form-field class="full-width" appearance="outline">
     <mat-label>Email</mat-label>
-    <input matInput placeholder="enter Email" />
+    <input [(ngModel)]="user.email" matInput placeholder="enter Email" />
     <!-- <mat-hint>Please enter a Email</mat-hint> -->
   </mat-form-field>
   </div>
@@ -34,7 +34,7 @@
   <div>
     <mat-form-field class="full-width" appearance="outline">
         <mat-label>Phonenumber</mat-label>
-        <input matInput placeholder="enter phonenumber" />
+        <input [(ngModel)]="user.phonenumber" matInput placeholder="enter phonenumber" />
         <!-- <mat-hint>Please enter a phonenumber</mat-hint> -->
       </mat-form-field>
   </div>
@@ -43,5 +43,5 @@
 
 <mat-dialog-actions>
   <button mat-button>Cancel</button>
-  <button mat-button cdkFocusInitial>Save</button>
+  <button (click)="saveUser()" mat-button cdkFocusInitial>Save</button>
 </mat-dialog-actions>

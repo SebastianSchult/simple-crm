@@ -6,6 +6,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatDialogRef} from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { DialodAddUserComponent } from '../dialod-add-user/dialod-add-user.component';
+import { User } from '../../models/user.class';
+
 
 @Component({
   selector: 'app-user',
@@ -16,6 +18,9 @@ import { DialodAddUserComponent } from '../dialod-add-user/dialod-add-user.compo
 })
 
 export class UserComponent {
+
+  user = new User();
+  
 
   constructor(public dialog: MatDialog) {
 

@@ -1,14 +1,14 @@
 export class User {
     firstName: string;
     lastName: string;
-    birthday: number;
+    birthDate: number;
     email: string;
     phonenumber: number;
 
     constructor(obj?: any){
         this.firstName = obj ? obj.firstName: '';
         this.lastName = obj ? obj.lastName: '';
-        this.birthday = obj ? obj.birthday: '';
+        this.birthDate = obj ? obj.birthDate: '';
         this.email = obj ? obj.email: '';
         this.phonenumber = obj ? obj.phonenumber: '';
 
