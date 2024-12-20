@@ -1,9 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+import { DialodAddUserComponent } from './dialod-add-user/dialod-add-user.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 
 @Component({
@@ -11,7 +21,7 @@ import {MatIconModule} from '@angular/material/icon';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [CommonModule, RouterOutlet, MatToolbarModule, MatSidenavModule, MatIconModule],
+  imports: [CommonModule, RouterOutlet, MatToolbarModule, MatSidenavModule, MatIconModule, RouterModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatDatepickerModule],
 })
 export class AppComponent {
   title = 'simple-crm';
