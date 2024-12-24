@@ -14,6 +14,11 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
+import {  inject } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { Firestore } from '@angular/fire/firestore';
+import { collection, collectionData } from '@angular/fire/firestore';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
@@ -22,8 +27,10 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [CommonModule, RouterOutlet, MatToolbarModule, MatSidenavModule, MatIconModule, RouterModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatDatepickerModule, FormsModule],
+  imports: [CommonModule, RouterOutlet, MatToolbarModule, MatSidenavModule, MatIconModule, RouterModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatDatepickerModule, FormsModule, AsyncPipe],
 })
 export class AppComponent {
   title = 'simple-crm';
+  firestore: Firestore = inject(Firestore);
+
 }
