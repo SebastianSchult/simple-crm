@@ -7,23 +7,17 @@
         <th>Email</th>
         <th>Phonenumber</th>
       </tr>
-      <tr>
-        <td>Userfirstname</td>
-        <td>Userlastname</td>
-        <td>Useremail</td>
-        <td>Userphonenumber</td>
-      </tr>
-      <tr>
-        <td>Userfirstname</td>
-        <td>Userlastname</td>
-        <td>Useremail</td>
-        <td>Userphonenumber</td>
+      
+      <tr *ngFor="let user of users">
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phonenumber }}</td>
       </tr>
     </table>
-
   </mat-card-content>
 </mat-card>
 
 <button (click)="openDialog()" class="add-user-btn" mat-fab color="primary" matTooltip="Add user" [matTooltipPosition]="'above'">
     <mat-icon>add</mat-icon>
-  </button>
+</button>
