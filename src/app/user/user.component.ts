@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { CommonModule, NgFor } from '@angular/common';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { Observable } from 'rxjs';
   standalone: true,
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
-  imports: [MatButtonModule, MatCardModule, MatIcon, MatTooltipModule, NgFor, CommonModule],
+  imports: [MatButtonModule, MatCardModule, MatIcon, MatTooltipModule, NgFor, CommonModule, RouterModule],
 })
 export class UserComponent {
   user = new User();
