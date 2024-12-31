@@ -11,11 +11,14 @@ import {
 import { Observable } from 'rxjs';
 import { User } from '../../models/user.class';
 import { DatePipe } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import {MatMenuModule} from '@angular/material/menu';
 
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [MatCardModule, DatePipe],
+  imports: [MatCardModule, DatePipe, MatIcon, MatButtonModule, MatMenuModule],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.scss',
 })
@@ -38,7 +41,7 @@ export class UserDetailComponent implements OnInit {
     docData(userDoc).subscribe((user: any) => {
       if (user) {
         this.user = new User(user);
-        
+
         // Firestore-Timestamp in Date umwandeln
         if (user.birthDate && user.birthDate.toDate) {
           this.user.birthDate = user.birthDate.toDate();
@@ -47,9 +50,17 @@ export class UserDetailComponent implements OnInit {
         } else if (typeof user.birthDate === 'number') {
           this.user.birthDate = new Date(user.birthDate);
         }
-  
+
         console.log('Benutzerdaten:', this.user);
       }
     });
-}
+  }
+
+  openDetailsDialog() {}
+
+  editDetails() {}
+
+  editUser() {
+
+  }
 }

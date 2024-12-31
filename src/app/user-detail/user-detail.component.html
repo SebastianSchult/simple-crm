@@ -1,17 +1,29 @@
 <mat-card class="user-detail-header" appearance="outlined">
-  <div class="user-detail-header-content">
-    <img src="./assets/img/profile.png" alt="" />
-    <div class="user-details">
-      <h2> {{user.firstName}} {{ user.lastName }}</h2>
-      <br />
-      <p class="user-details-mail">Email: {{ user.email }}</p>
+    <button mat-icon-button class="pin-upper-corner-right" [matMenuTriggerFor]="userMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item (click)="editUser()">Edit</button>
+    </mat-menu>
+    <div class="user-detail-header-content">
+      <img src="./assets/img/profile.png" alt="" />
+      <div class="user-details">
+        <h2> {{ user.firstName }} {{ user.lastName }}</h2>
+        <br />
+        <p class="user-details-mail">Email: {{ user.email }}</p>
+      </div>
     </div>
-  </div>
-</mat-card>
+  </mat-card>
 
 <mat-card class="mt-32" appearance="outlined"> 
+    <button mat-icon-button class="pin-upper-corner-right" [matMenuTriggerFor]="menuDetails">
+        <mat-icon>more_vert</mat-icon>
+        <mat-menu #menuDetails="matMenu">
+            <button mat-menu-item (click)="editDetails()">Edit</button>
+          </mat-menu>
+      </button>
     <mat-card-header>
-        <mat-card-title>Address</mat-card-title>
+        <mat-card-title>Details</mat-card-title>
     </mat-card-header>
     <mat-card-content>
         Geburtsdatum: {{ user.birthDate | date:'dd.MM.yyyy' }}<br>
