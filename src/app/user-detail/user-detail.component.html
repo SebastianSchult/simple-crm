@@ -2,9 +2,9 @@
   <div class="user-detail-header-content">
     <img src="./assets/img/profile.png" alt="" />
     <div class="user-details">
-      <h2>Max Mustermann</h2>
+      <h2> {{user.firstName}} {{ user.lastName }}</h2>
       <br />
-      <p class="user-details-mail">Email: max&#64;example.com</p>
+      <p class="user-details-mail">Email: {{ user.email }}</p>
     </div>
   </div>
 </mat-card>
@@ -14,7 +14,7 @@
         <mat-card-title>Address</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        123 Main Street<br>
-        Anytown, USA
+        Geburtsdatum: {{ user.birthDate | date:'dd.MM.yyyy' }}<br>
+        Telefonnummer: {{ user.phonenumber }}
         </mat-card-content>
 </mat-card>

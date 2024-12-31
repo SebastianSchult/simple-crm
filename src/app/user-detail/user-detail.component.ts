@@ -1,36 +1,55 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute } from '@angular/router';
-import { Firestore, collection, doc, docData, onSnapshot } from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  doc,
+  docData,
+  onSnapshot,
+} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user.class';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [MatCardModule],
+  imports: [MatCardModule, DatePipe],
   templateUrl: './user-detail.component.html',
-  styleUrl: './user-detail.component.scss'
+  styleUrl: './user-detail.component.scss',
 })
 export class UserDetailComponent implements OnInit {
   firestore: Firestore = inject(Firestore);
-  route: ActivatedRoute = inject(ActivatedRoute);  // Injiziere ActivatedRoute
-  user$: Observable<any> | undefined;
-  userID ='';
+  route: ActivatedRoute = inject(ActivatedRoute); // Injiziere ActivatedRoute
+  user: User = new User();
+  userID = '';
 
   ngOnInit() {
-    // Extrahiere die userId aus der URL
-    const userId = this.route.snapshot.paramMap.get('id');
-  
-
-    if (userId) {
-      console.log('Abgerufene User ID:', userId);
-      // Hol das User-Dokument aus Firestore mit der User-ID
-      const userDoc = doc(this.firestore, `users/${userId}`);
-      this.user$ = docData(userDoc);  // Beobachte die Daten des Users
-      
-    }
+    this.route.paramMap.subscribe((param) => {
+      this.userID = param.get('id') || '';
+      console.log('GOT IT', this.userID);
+      this.getUser();
+    });
   }
+
+  getUser() {
+    const userDoc = doc(this.firestore, `users/${this.userID}`);
+    docData(userDoc).subscribe((user: any) => {
+      if (user) {
+        this.user = new User(user);
+        
+        // Firestore-Timestamp in Date umwandeln
+        if (user.birthDate && user.birthDate.toDate) {
+          this.user.birthDate = user.birthDate.toDate();
+        } else if (user.birthDate && user.birthDate.seconds) {
+          this.user.birthDate = new Date(user.birthDate.seconds * 1000);
+        } else if (typeof user.birthDate === 'number') {
+          this.user.birthDate = new Date(user.birthDate);
+        }
+  
+        console.log('Benutzerdaten:', this.user);
+      }
+    });
 }
-
-
+}
