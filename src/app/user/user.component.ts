@@ -26,18 +26,15 @@ export class UserComponent {
   constructor(public dialog: MatDialog, private firestore: Firestore) {}
 
   ngOnInit() {
-    // Live-Update der User-Daten
     this.loadUsers();
   }
 
   loadUsers() {
-    // Referenz auf die Collection 'users' erstellen
     const userCollection = collection(this.firestore, 'users');
     
-    // Live-Daten-Stream mit collectionData abonnieren
     this.users$ = collectionData(userCollection, { idField: 'id' });
 
-    // Optionale Debug-Ausgabe
+
     this.users$.subscribe((users) => {
       console.log('Aktualisierte Benutzerdaten:', users);
     });

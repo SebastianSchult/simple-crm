@@ -27,7 +27,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [CommonModule, RouterOutlet, MatToolbarModule, MatSidenavModule, MatIconModule, RouterModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatDatepickerModule, FormsModule, AsyncPipe],
+  imports: [CommonModule, RouterOutlet, MatToolbarModule, MatSidenavModule, MatIconModule, RouterModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatDatepickerModule, FormsModule],
 })
 export class AppComponent {
   title = 'simple-crm';

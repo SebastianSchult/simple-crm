@@ -14,6 +14,9 @@ import { DatePipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogEditDetailsComponent } from '../dialog-edit-details/dialog-edit-details.component';
+import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 
 @Component({
   selector: 'app-user-detail',
@@ -27,6 +30,8 @@ export class UserDetailComponent implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute); // Injiziere ActivatedRoute
   user: User = new User();
   userID = '';
+
+  constructor(public dialog: MatDialog){}
 
   ngOnInit() {
     this.route.paramMap.subscribe((param) => {
@@ -58,9 +63,12 @@ export class UserDetailComponent implements OnInit {
 
   openDetailsDialog() {}
 
-  editDetails() {}
+  editDetails() {
+    this.dialog.open(DialogEditDetailsComponent)
+  }
 
   editUser() {
+    this.dialog.open(DialogEditUserComponent)
 
   }
 }
