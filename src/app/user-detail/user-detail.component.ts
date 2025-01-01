@@ -10,18 +10,19 @@ import {
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user.class';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { DialogEditDetailsComponent } from '../dialog-edit-details/dialog-edit-details.component';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
+
 
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [MatCardModule, DatePipe, MatIcon, MatButtonModule, MatMenuModule],
+  imports: [MatCardModule, DatePipe, MatIcon, MatButtonModule, MatMenuModule, MatDialogModule, CommonModule],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.scss',
 })
@@ -64,7 +65,8 @@ export class UserDetailComponent implements OnInit {
   openDetailsDialog() {}
 
   editDetails() {
-    this.dialog.open(DialogEditDetailsComponent)
+    const dialog = this.dialog.open(DialogEditDetailsComponent)
+    dialog.componentInstance.user= this.user;
   }
 
   editUser() {
