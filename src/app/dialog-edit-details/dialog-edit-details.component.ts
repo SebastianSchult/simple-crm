@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 export class DialogEditDetailsComponent {
   loading = false;
   user: User = new User();
+  userId: string = '';
 
   constructor(public dialogRef: MatDialogRef<DialogEditDetailsComponent>){
 
