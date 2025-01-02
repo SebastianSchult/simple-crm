@@ -26,7 +26,11 @@
         <mat-card-title>Details</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        Geburtsdatum: {{ user.birthDate | date:'dd.MM.yyyy' }}<br>
-        Telefonnummer: {{ user.phonenumber }}
+        Street: {{ user.street }}
+        Housenumber: {{ user.streetnumber }}<br>
+        Zip Code: {{ user.zipCode }}
+        City: {{ user.city }}<br>
+        Birthdate: {{ user.birthDate | date:'dd.MM.yyyy' }}<br>
+        Telefonnumber: {{ user.phonenumber }}
         </mat-card-content>
 </mat-card>

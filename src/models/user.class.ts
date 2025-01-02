@@ -1,6 +1,10 @@
 export class User {
     firstName: string;
     lastName: string;
+    street: string;
+    streetnumber: number;
+    zipCode: number;
+    city: string;
     birthDate: Date | null;
     email: string;
     phonenumber: number;
@@ -8,6 +12,10 @@ export class User {
     constructor(obj?: any) {
         this.firstName = obj?.firstName || '';
         this.lastName = obj?.lastName || '';
+        this.street = obj?.street || '';
+        this.streetnumber = obj?.streetnumber || 0;
+        this.zipCode = obj?.zipCode || 0;
+        this.city = obj?.city || '';
         this.email = obj?.email || '';
         this.phonenumber = obj?.phonenumber || 0;
 
